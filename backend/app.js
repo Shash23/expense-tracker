@@ -1,7 +1,9 @@
 const express = require('express');
 const cors = require('cors');
+
 const { db } = require('./db/db');
 const app = express();
+
 
 require('dotenv').config()
 
@@ -13,7 +15,7 @@ app.use(express.json())
 app.use(cors())
 
 // routes
-readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes' + route)))
+readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
 
    
 app.listen(PORT, () => {
